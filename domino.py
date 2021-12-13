@@ -99,53 +99,78 @@ class creation_jeux:
 
          self.joueur2.append(d2)
          self.liste_domino.remove(d2)
+
+   def go(self):
+      verif_car_deux_possibilite = True
+      j1 =   self.joueur1.random.choice(self.joueur1)
+      self.joueur1.remove(j1)
+      # if(verif_car_deux_possibilite):
+      #    for x in self.joueur2:
+      #       if(x.est_compatible(j1.valeur_a_droite)):
+
+      #          print("trouve droite")
+
+      #          return
+            
+      #       elif(x.est_compatible(j1.valeur_a_gauche)):
+
+      #          print("trouve gauche")
+
+      #          return
+            
+
+         
+
+
+
+      
       
 
 
        
 
 
-# jeu = creation_jeux()
-# jeu.creation_des_dominos()
-# jeu.distribution_des_dominos()
-# print(jeu.joueur1)
-# print(jeu.joueur2)
+jeu = creation_jeux()
+jeu.creation_des_dominos()
+jeu.distribution_des_dominos()
+jeu.go()
 
 
 
 
 
 
-# Test constructeur
-mon_domino = Domino()
-assert mon_domino.valeur_a_gauche in range(0, 7)
-assert mon_domino.valeur_a_droite in range(0, 7)
-mon_domino = Domino(0, 5)
-assert mon_domino.valeur_a_gauche == 0
-assert mon_domino.valeur_a_droite == 5
-mon_autre_domino = Domino(1, 4)
-assert mon_autre_domino.__repr__() == '[1:4]'
-assert mon_domino.__repr__() == '[0:5]'
-print(mon_domino, mon_autre_domino)
 
-# Test inverse()
-mon_domino = Domino(0, 5)
-print(mon_domino.valeur_a_droite)
-mon_domino.inverse()
-assert mon_domino.valeur_a_gauche == 5
-assert mon_domino.valeur_a_droite == 0
-print(mon_domino)
+# # Test constructeur
+# mon_domino = Domino()
+# assert mon_domino.valeur_a_gauche in range(0, 7)
+# assert mon_domino.valeur_a_droite in range(0, 7)
+# mon_domino = Domino(0, 5)
+# assert mon_domino.valeur_a_gauche == 0
+# assert mon_domino.valeur_a_droite == 5
+# mon_autre_domino = Domino(1, 4)
+# assert mon_autre_domino.__repr__() == '[1:4]'
+# assert mon_domino.__repr__() == '[0:5]'
+# print(mon_domino, mon_autre_domino)
 
-# Test score()
-mon_autre_domino = Domino(1, 4)
-print(mon_autre_domino.score())
-assert mon_autre_domino.score() == 5
+# # Test inverse()
+# mon_domino = Domino(0, 5)
+# print(mon_domino.valeur_a_droite)
+# mon_domino.inverse()
+# assert mon_domino.valeur_a_gauche == 5
+# assert mon_domino.valeur_a_droite == 0
+# print(mon_domino)
+
+# # Test score()
+# mon_autre_domino = Domino(1, 4)
+# print(mon_autre_domino.score())
+# assert mon_autre_domino.score() == 5
 
 
-# Test est_compatible()
-mon_domino = Domino(0, 5)
-assert mon_domino.est_compatible(4) == False
-mon_autre_domino = Domino(1, 4)
-assert mon_autre_domino.est_compatible(4) == True
-assert mon_autre_domino.est_compatible(5) == False
-assert mon_autre_domino.est_compatible(0) == False
+# # Test est_compatible()
+# mon_domino = Domino(0, 5)
+# assert mon_domino.est_compatible(4) == False
+# mon_autre_domino = Domino(1, 4)
+# assert mon_autre_domino.est_compatible(4) == True
+# assert mon_autre_domino.est_compatible(5) == False
+# assert mon_autre_domino.est_compatible(0) == False
