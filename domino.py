@@ -36,8 +36,16 @@ class Domino:
    
    def inverse(self):
 
-      self.valeur_a_gauche = self.valeur_a_droite
-      self.valeur_a_droite = self.valeur_a_gauche
+      valeur_a_gauche = self.valeur_a_gauche
+      valeur_a_droite = self.valeur_a_droite
+
+      self.valeur_a_gauche = valeur_a_droite
+      self.valeur_a_droite = valeur_a_gauche
+   
+   def score(self):
+
+      return self.valeur_a_gauche + self.valeur_a_droite
+
 
 
 
@@ -107,3 +115,16 @@ mon_autre_domino = Domino(1, 4)
 assert mon_autre_domino.__repr__() == '[1:4]'
 assert mon_domino.__repr__() == '[0:5]'
 print(mon_domino, mon_autre_domino)
+
+# Test inverse()
+mon_domino = Domino(0, 5)
+print(mon_domino.valeur_a_droite)
+mon_domino.inverse()
+assert mon_domino.valeur_a_gauche == 5
+assert mon_domino.valeur_a_droite == 0
+print(mon_domino)
+
+# Test score()
+mon_autre_domino = Domino(1, 4)
+print(mon_autre_domino.score())
+assert mon_autre_domino.score() == 5
