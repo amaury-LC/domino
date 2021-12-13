@@ -46,6 +46,18 @@ class Domino:
 
       return self.valeur_a_gauche + self.valeur_a_droite
 
+   def est_compatible(self,face):
+
+      if (self.valeur_a_gauche == face) | (self.valeur_a_droite == face) :
+
+       
+
+         return True
+
+      else:
+
+         return False
+
 
 
 
@@ -128,3 +140,12 @@ print(mon_domino)
 mon_autre_domino = Domino(1, 4)
 print(mon_autre_domino.score())
 assert mon_autre_domino.score() == 5
+
+
+# Test est_compatible()
+mon_domino = Domino(0, 5)
+assert mon_domino.est_compatible(4) == False
+mon_autre_domino = Domino(1, 4)
+assert mon_autre_domino.est_compatible(4) == True
+assert mon_autre_domino.est_compatible(5) == False
+assert mon_autre_domino.est_compatible(0) == False
