@@ -67,9 +67,9 @@ class Domino:
 # dominos= ((0,0), (0,1),(0,2), (0,3), (0,4), (0,5), (0,6), (1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (2,2), (2,3), (2,4), (2,5), (2,6), (3,3), (3,4), (3,5), (3,6), (4,4), (4,5), (4,6), (5,5), (5,6), (6,6))
 class creation_jeux:
 
-   joueur1 = []
-   joueur2 = []
-   liste_domino = []
+   joueur1 = {}
+   joueur2 = {}
+   liste_domino = {}
 
    def creation_des_dominos(self):
 
@@ -81,42 +81,44 @@ class creation_jeux:
          for y in dominos2:
 
             d1 = Domino(x,y)
-            self.liste_domino.append(d1)
+            # self.liste_domino.append(d1)
+            self.liste_domino["("+str(d1.valeur_a_gauche)+","+str(d1.valeur_a_droite)+")"] = d1
          dominos2.pop(0)
 
    def distribution_des_dominos(self):
 
       for x in range(7):
 
-         d1 = random.choice(self.liste_domino)
+         d1 = random.choice(list(self.liste_domino.items()))
 
-         self.joueur1.append(d1)
-         self.liste_domino.remove(d1)
+       
+
+         # self.joueur1.append(d1)
+         self.joueur1[d1[0]] = d1[1]
+         # self.liste_domino.remove(d1)
+         del self.liste_domino[d1[0]]
 
       for x in range(7):
 
-         d2 = random.choice(self.liste_domino)
+         d2 = random.choice(list(self.liste_domino.items()))
 
-         self.joueur2.append(d2)
-         self.liste_domino.remove(d2)
+         # self.joueur2.append(d2)
+         # self.liste_domino.remove(d2)
+         self.joueur2[d2[0]] = d2[1]
+         del self.liste_domino[d2[0]]
 
    def go(self):
       verif_car_deux_possibilite = True
-      j1 =   self.joueur1.random.choice(self.joueur1)
-      self.joueur1.remove(j1)
+      j1 =   self.joueur1.random.choice(list(self.joueur1.items()))
+      self.joueur1.remove(j1[0])
       # if(verif_car_deux_possibilite):
-      #    for x in self.joueur2:
-      #       if(x.est_compatible(j1.valeur_a_droite)):
 
-      #          print("trouve droite")
+         
 
-      #          return
-            
-      #       elif(x.est_compatible(j1.valeur_a_gauche)):
 
-      #          print("trouve gauche")
 
-      #          return
+      # return
+          
             
 
          
@@ -133,7 +135,10 @@ class creation_jeux:
 jeu = creation_jeux()
 jeu.creation_des_dominos()
 jeu.distribution_des_dominos()
-jeu.go()
+print(jeu.joueur1)
+print(jeu.joueur2)
+
+# jeu.go()
 
 
 
