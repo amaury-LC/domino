@@ -13,19 +13,33 @@ import random
 
 class Domino:
 
-   def __init__(self, A, B):
-    self.A = A
-    self.B = B
+   valeur_a_gauche = 0
+   valeur_a_droite = 0
+
+   def __init__(self, valeur_a_gauche = 0, valeur_a_droite = 0):
+    self.valeur_a_gauche = valeur_a_gauche
+    self.valeur_a_droite = valeur_a_droite
 
    def affiche_points(self):
 
   
-      print("("+str(self.A)+","+str(self.B)+")")
+      print("("+str(self.valeur_a_gauche)+","+str(self.valeur_a_droite)+")")
       
 
    def valeur(self):
 
       return
+
+   def __repr__(self):
+
+      return "["+str(self.valeur_a_gauche)+":"+str(self.valeur_a_droite)+"]"
+   
+   def inverse(self):
+
+      self.valeur_a_gauche = self.valeur_a_droite
+      self.valeur_a_droite = self.valeur_a_gauche
+
+
 
       
 # dominos = [0,1,2,3,4,5,6]
@@ -71,22 +85,25 @@ class creation_jeux:
        
 
 
-jeu = creation_jeux()
-
-jeu.creation_des_dominos()
-jeu.distribution_des_dominos()
-# print(liste_tutple_domino)
-print(jeu.joueur1)
-print(jeu.joueur2)
-# print(dominos)
-# dominos.pop(0)
-# print(dominos)
+# jeu = creation_jeux()
+# jeu.creation_des_dominos()
+# jeu.distribution_des_dominos()
+# print(jeu.joueur1)
+# print(jeu.joueur2)
 
 
 
-# d1 = Domino(2, 6)
-# d2 = Domino(4, 3)
-# d1.affiche_points()
-# d2. affiche_points()
 
-# print(f'total des points : {d1.valeur() + d2.valeur()}')
+
+
+# Test constructeur
+mon_domino = Domino()
+assert mon_domino.valeur_a_gauche in range(0, 7)
+assert mon_domino.valeur_a_droite in range(0, 7)
+mon_domino = Domino(0, 5)
+assert mon_domino.valeur_a_gauche == 0
+assert mon_domino.valeur_a_droite == 5
+mon_autre_domino = Domino(1, 4)
+assert mon_autre_domino.__repr__() == '[1:4]'
+assert mon_domino.__repr__() == '[0:5]'
+print(mon_domino, mon_autre_domino)
