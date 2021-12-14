@@ -85,7 +85,7 @@ class Talon:
     """
     Talon (pioche) du jeu de domino
     """
-    vide = True
+
 
 
 
@@ -134,20 +134,25 @@ class Talon:
 
     def pioche(self):
 
-        if not self.vide:
+        if len(self.t) == 1:
+
+            self.t = []
+        elif len(self.t) == 0:
+
+            return None
+        else:
 
             domino_pioche = []
 
-            domino_pioche.append(random.choice(self.t))
+            domino_random = random.choice(self.t)
 
-
+            domino_pioche.append(domino_random)
 
             self.t = domino_pioche
-        else:
 
-            self.t = []
 
-        return None
+
+        
 
         
 
@@ -169,9 +174,6 @@ talon = Talon([mon_domino, mon_autre_domino])
 talon.pioche()
 assert len(talon.t) == 1
 talon.pioche()
-print('__________________________________')
-
-print(len(talon.t))
 assert len(talon.t) == 0
 assert talon.pioche() == None
 
