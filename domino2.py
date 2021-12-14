@@ -85,6 +85,9 @@ class Talon:
     """
     Talon (pioche) du jeu de domino
     """
+    vide = True
+
+
 
     def __init__(self, t=None):
 
@@ -119,6 +122,7 @@ class Talon:
         else:
 
             self.t = t
+            self.vide = False
             
 
 
@@ -129,7 +133,23 @@ class Talon:
         
 
     def pioche(self):
-        pass
+
+        if not self.vide:
+
+            domino_pioche = []
+
+            domino_pioche.append(random.choice(self.t))
+
+
+
+            self.t = domino_pioche
+        else:
+
+            self.t = []
+
+        return None
+
+        
 
     def __repr__(self):
         pass
@@ -142,7 +162,18 @@ assert len(talon.t) == 2
 talon = Talon()
 assert len(talon.t) == 10
 
+# Test pioche()
+mon_domino = Domino(2, 5)
+mon_autre_domino = Domino(1, 5)
+talon = Talon([mon_domino, mon_autre_domino])
+talon.pioche()
+assert len(talon.t) == 1
+talon.pioche()
+print('__________________________________')
 
+print(len(talon.t))
+assert len(talon.t) == 0
+assert talon.pioche() == None
 
 # class Chaine:
 #     """
