@@ -109,13 +109,51 @@ class creation_jeux:
 
    def go(self):
       verif_car_deux_possibilite = True
+      trouver = False
       j1 =   random.choice(list(self.joueur1.items()))
       del self.joueur1[j1[0]]
       if(verif_car_deux_possibilite):
 
          print("___________________________________________")
-         print(j1[0])
-         print(self.joueur2.keys())
+         
+         for x in self.joueur2.keys():
+
+            if j1[0][1]  == x[1]:
+
+               print(j1[0][1])
+               trouver = True
+
+         if not trouver :
+
+            for x in self.joueur2.keys():
+
+               if j1[0][3]  == x[3]:
+
+                  print(j1[0][3])
+                  trouver = True
+
+         verif_car_deux_possibilite = True
+
+      if not trouver :
+
+         print("pas trouver")
+      else:
+         print('trouver')
+
+      print("fin")
+
+
+
+      
+
+         
+         
+
+
+
+           
+
+
          # print()
          # print(j1[0]  in self.joueur2.keys())
          # print(j1[1]  in self.joueur2.keys())
