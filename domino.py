@@ -234,3 +234,5 @@ jeu.go()
 # assert mon_autre_domino.est_compatible(4) == True
 # assert mon_autre_domino.est_compatible(5) == False
 # assert mon_autre_domino.est_compatible(0) == False
+
+
