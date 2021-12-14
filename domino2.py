@@ -177,61 +177,86 @@ talon.pioche()
 assert len(talon.t) == 0
 assert talon.pioche() == None
 
-# class Chaine:
-#     """
-#     Représentation de la chaîne de jeu
-#     exemple: [1: ][3:5][5:2]
-#     En plus de la liste ordonnée des dominos selon le placement,
-#     Deux valeurs seront stockées:
-#     valeur_a_gauche dans notre exemple 1
-#     valeur_a_droite dans notre exemple 2
-#     """
+class Chaine:
+    """
+    Représentation de la chaîne de jeu
+    exemple: [1: ][3:5][5:2]
+    En plus de la liste ordonnée des dominos selon le placement,
+    Deux valeurs seront stockées:
+    valeur_a_gauche dans notre exemple 1
+    valeur_a_droite dans notre exemple 2
+    """
+    c = []
 
-#     def __init__(self):
-#         pass
-
-
-#     def extremites(self):
-#         pass
-
-#     def pose_premier(self, domino):
-#         self.valeur_a_gauche = domino.valeur_a_gauche
-#         self.valeur_a_droite = domino.valeur_a_droite
+    def __init__(self):
+        self.c = []
+        self.valeur_a_gauche = None
+        self.valeur_a_droite = None
         
 
-#     def ajoute_au_cote_gauche(self, domino):
-#         pass
+
+    def extremites(self):
+        nb = len(self.c)
+        print(self.c)
+        # self.valeur_a_gauche = self.c[0].valeur_a_gauche
+        # self.valeur_a_droit = self.c[1].valeur_a_droit
+
+        
+
+    def pose_premier(self, domino):
+        self.valeur_a_gauche = domino.valeur_a_gauche
+        self.valeur_a_droite = domino.valeur_a_droite
+
+        self.c.append(domino)
+        
+
+    def ajoute_au_cote_gauche(self, domino):
+
+        self.c.insert(0,domino)
+
+        self.valeur_a_gauche = domino.valeur_a_gauche
+
+        self.extremites()
+        
+        
 
 
-#     def ajoute_au_cote_droit(self, domino):
-#         pass
+    def ajoute_au_cote_droit(self, domino):
+
+        
+
+        self.c.insert(len(self.c),domino)
+
+        self.extremites()
+        
+        
+
+    def __repr__(self):
+        
+        return str(self.c)
 
 
-#     def __repr__(self):
-#         pass
+chaine = Chaine()
+mon_domino = Domino(0, 5)
+chaine.pose_premier(mon_domino)
+assert chaine.valeur_a_gauche == 0
+assert chaine.valeur_a_droite == 5
 
+# Les dominos:
+# [3:5], [5:2], [1: ]
 
-# chaine = Chaine()
-# mon_domino = Domino(0, 5)
-# chaine.pose_premier(mon_domino)
-# assert chaine.valeur_a_gauche == 0
-# assert chaine.valeur_a_droite == 5
+premier_domino = Domino(3, 5)
+deuxieme_domino = Domino(2, 5)
+troisieme_domino = Domino(1, 0)
 
-# # Les dominos:
-# # [3:5], [5:2], [1: ]
+# Placement
+#      [3:5]
+#      [3:5][5:2]
+# [1: ][3:5][5:2]
 
-# premier_domino = Domino(3, 5)
-# deuxieme_domino = Domino(2, 5)
-# troisieme_domino = Domino(1, 0)
-
-# # Placement
-# #      [3:5]
-# #      [3:5][5:2]
-# # [1: ][3:5][5:2]
-
-# chaine = Chaine()
-# chaine.pose_premier(premier_domino)
-# chaine.ajoute_au_cote_droit(deuxieme_domino.inverse())
+chaine = Chaine()
+chaine.pose_premier(premier_domino)
+chaine.ajoute_au_cote_droit(deuxieme_domino.inverse())
 # chaine.ajoute_au_cote_gauche(troisieme_domino)
 # assert chaine.valeur_a_gauche == 1
 # assert chaine.valeur_a_droite == 2
