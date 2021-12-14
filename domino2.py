@@ -58,19 +58,19 @@ assert mon_domino.valeur_a_droite == 5
 mon_autre_domino = Domino(1, 4)
 assert mon_autre_domino.__repr__() == '[1:4]'
 assert mon_domino.__repr__() == '[0:5]'
-print(mon_domino, mon_autre_domino)
+# print(mon_domino, mon_autre_domino)
 
 # Test inverse()
 mon_domino = Domino(0, 5)
-print(mon_domino.valeur_a_droite)
+# print(mon_domino.valeur_a_droite)
 mon_domino.inverse()
 assert mon_domino.valeur_a_gauche == 5
 assert mon_domino.valeur_a_droite == 0
-print(mon_domino)
+# print(mon_domino)
 
 # Test score()
 mon_autre_domino = Domino(1, 4)
-print(mon_autre_domino.score())
+# print(mon_autre_domino.score())
 assert mon_autre_domino.score() == 5
 
 
@@ -198,20 +198,20 @@ class Chaine:
 
     def extremites(self):
 
-        print("-----------------------------------")
-        print(self.c)
-        print(self.c[2])
-       
-        # self.valeur_a_gauche = self.c[0].valeur_a_gauche
-        # self.valeur_a_droit = self.c[len(self.c)].valeur_a_droite
+        print("chaine : "+str(self.c))
+      
+        self.valeur_a_gauche = self.c[0].valeur_a_gauche
+        self.valeur_a_droite = self.c[-1].valeur_a_droite
 
         
 
     def pose_premier(self, domino):
+        
         self.valeur_a_gauche = domino.valeur_a_gauche
         self.valeur_a_droite = domino.valeur_a_droite
 
         self.c.append(domino)
+        print("chaine : "+str(self.c))
         
 
     def ajoute_au_cote_gauche(self, domino):
@@ -265,5 +265,5 @@ chaine.pose_premier(premier_domino)
 deuxieme_domino.inverse()
 chaine.ajoute_au_cote_droit(deuxieme_domino)
 chaine.ajoute_au_cote_gauche(troisieme_domino)
-# assert chaine.valeur_a_gauche == 1
-# assert chaine.valeur_a_droite == 2
+assert chaine.valeur_a_gauche == 1
+assert chaine.valeur_a_droite == 2
