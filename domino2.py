@@ -225,7 +225,7 @@ class Chaine:
         
 
 
-    def ajoute_au_cote_droit(self, domino):
+    def ajoute_au_cote_droite(self, domino):
 
         
 
@@ -263,7 +263,69 @@ troisieme_domino = Domino(1, 0)
 chaine = Chaine()
 chaine.pose_premier(premier_domino)
 deuxieme_domino.inverse()
-chaine.ajoute_au_cote_droit(deuxieme_domino)
+chaine.ajoute_au_cote_droite(deuxieme_domino)
 chaine.ajoute_au_cote_gauche(troisieme_domino)
 assert chaine.valeur_a_gauche == 1
 assert chaine.valeur_a_droite == 2
+
+print("--------------------------------------------------------")
+
+mes_domino = Talon()
+domino = Talon()
+domino.pioche()
+print(domino.t)
+print(mes_domino.t)
+
+chaine = Chaine()
+chaine.pose_premier(domino.t[0])
+def jeu():
+
+    while mes_domino.t != []:
+
+        print(chaine.c)
+        print("vos dominos : "+str(mes_domino.t))
+        reponse_G_D  = input('Choisissez entre gauche ou droite : ')
+        if(reponse_G_D == "gauche"):
+
+            print("vos dominos : "+str(mes_domino.t))
+            reponse_D = input('Choisissez votre domino: ')
+            reponse_I = input('Voulez vous l inverser (oui/non): ')
+            if(reponse_I == "oui"):
+
+                mes_domino.t[int(reponse_D)].inverse()
+
+            
+            chaine.ajoute_au_cote_gauche(mes_domino.t[int(reponse_D)])
+            del mes_domino.t[int(reponse_D)]
+
+
+
+
+            
+
+        elif(reponse_G_D == "droite"):
+
+            print("vos dominos : "+str(mes_domino.t))
+            reponse_D = input('Choisissez votre domino: ')
+            reponse_I = input('Voulez vous l inverser (oui/non): ')
+            if(reponse_I == "oui"):
+
+                mes_domino.t[int(reponse_D)].inverse()
+
+            
+            chaine.ajoute_au_cote_droite(mes_domino.t[int(reponse_D)])
+            del mes_domino.t[int(reponse_D)]
+
+jeu()
+
+
+
+
+
+
+
+
+
+
+
+
