@@ -109,15 +109,32 @@ class creation_jeux:
 
    def go(self):
       verif_car_deux_possibilite = True
-      j1 =   self.joueur1.random.choice(list(self.joueur1.items()))
-      self.joueur1.remove(j1[0])
-      # if(verif_car_deux_possibilite):
+      j1 =   random.choice(list(self.joueur1.items()))
+      del self.joueur1[j1[0]]
+      if(verif_car_deux_possibilite):
+
+         print("___________________________________________")
+         print(j1[0])
+         print(self.joueur2.keys())
+         # print()
+         # print(j1[0]  in self.joueur2.keys())
+         # print(j1[1]  in self.joueur2.keys())
+
+         #if j1[0]  in self.joueur2.keys():
+
+         #    print(j1[0])
+            
+
+         # elif j1[0]  in self.joueur2.keys():
+
+         #    print(j1[0])
+            
 
          
 
 
 
-      # return
+      return
           
             
 
@@ -135,10 +152,10 @@ class creation_jeux:
 jeu = creation_jeux()
 jeu.creation_des_dominos()
 jeu.distribution_des_dominos()
-print(jeu.joueur1)
-print(jeu.joueur2)
+# print(jeu.joueur1)
+# print(jeu.joueur2)
 
-# jeu.go()
+jeu.go()
 
 
 
