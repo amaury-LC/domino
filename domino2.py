@@ -299,9 +299,7 @@ def jeu():
             del mes_domino.t[int(reponse_D)]
 
 
-
-
-            
+        
 
         elif(reponse_G_D == "droite"):
 
